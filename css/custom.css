@@ -15,3 +15,10 @@
 .goTopTemp i{
     display: block;
 }
+.topBannerTemp{
+    background-color: #b8daff;
+    height: 90px;
+}
+.isFixed{
+    position: fixed;
+}

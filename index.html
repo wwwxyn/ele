@@ -18,10 +18,12 @@
 </head>
 <body>
 <div id="app">
+    <topbannercpn></topbannercpn>
+    <mainnavcpn></mainnavcpn>
+    <gotopcpn></gotopcpn>
     <div style="height: 2000px;background-color: lightgreen"></div>
-<mainnavcpn></mainnavcpn>
-<gotopcpn></gotopcpn>
 </div>
+
 <!--回到顶部-->
 <template id="goTopTemp">
     <div class="goTopTemp" v-show="topDistance>100" v-on:click="gotop">
@@ -36,6 +38,24 @@
             <h6 class="col-2 "><i class="fa fa-home"></i>发现</h6>
             <h6 class="col-2 "><i class="fa fa-home"></i>订单</h6>
             <h6 class="col-2 "><i class="fa fa-home"></i>我的</h6>
+        </div>
+    </div>
+</template>
+<!--顶部定位搜索栏-->
+<template id="topBannerTemp">
+    <div class="topBannerTemp">
+        <div slot="loc" id="infoBar">
+        <i class="fa fa-location-arrow"></i>大连东软信息学院<i class="fa fa fa-arrow-circle-o-down"></i>
+        </div>
+        <div slot="content" id="searchBar">
+            <div class="input-group mb-3 mt-3 col-10 offset-1" :class="searchBarFixed === true ? 'isFixed' :''">
+                <div class="input-group-prepend">
+                     <span class="input-group-text">
+                         <i class="fa fa-search"></i>
+                     </span>
+                </div>
+                <input type="text" class="form-control" placeholder="Username">
+            </div>
         </div>
     </div>
 </template>
