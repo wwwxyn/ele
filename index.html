@@ -18,8 +18,17 @@
 </head>
 <body>
 <div id="app">
-<mainnav></mainnav>
+    <div style="height: 2000px;background-color: lightgreen"></div>
+<mainnavcpn></mainnavcpn>
+<gotopcpn></gotopcpn>
 </div>
+<!--回到顶部-->
+<template id="goTopTemp">
+    <div class="goTopTemp" v-show="topDistance>100" v-on:click="gotop">
+        <h6><i class="fa fa-arrow-circle-o-up"></i>回到顶部</h6>
+    </div>
+</template>
+<!--页面底部主导航-->
 <template id="mainTemp">
     <div class="container-fluid fixed-bottom text-muted mainTemp">
         <div class="row">
