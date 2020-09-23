@@ -5,7 +5,7 @@ let topBannerCpn = Vue.extend({
     template: '#topBannerTemp',
     data:function () {
         return {
-            searchBarFixed:false,
+            dist:0
         };
     },
     mounted() {
@@ -13,12 +13,17 @@ let topBannerCpn = Vue.extend({
     },
     methods: {
         handleScroll () {
-            var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-            var offsetTop = document.querySelector('#searchBar').offsetTop
-            if (scrollTop >= offsetTop) {
-                this.searchBarFixed = true
+            this.dist = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+            // var searchTop = document.querySelector('#searchBar').offsetTop
+            // console.log(searchTop)
+            if (this.dist > 16 ) {
+                $(".topBannerTemp").addClass("fixed-top");
+                $("#infoBar").css("display","none");
+                
             } else {
-                this.searchBarFixed = false
+                $(".topBannerTemp").removeClass("fixed-top");
+                $("#infoBar").css("display","block");
+
             }
             // console.log(scrollTop,offsetTop)
         },

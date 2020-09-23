@@ -17,8 +17,5 @@
 }
 .topBannerTemp{
     background-color: #b8daff;
-    height: 90px;
-}
-.isFixed{
-    position: fixed;
+    padding-bottom: 0.5em;
 }
