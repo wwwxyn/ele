@@ -59,8 +59,6 @@ let gotopcpn = Vue.component('gotopcpn',goTopCpn)
 let topBannercpn = Vue.component('topbannercpn',topBannerCpn)
 
 
-
-
 const vm = new Vue({
     el:"#app",
     data:{
