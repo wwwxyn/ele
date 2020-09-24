@@ -35,6 +35,10 @@ let mainCpn = Vue.extend({
     template:'#mainTemp'
 });
 
+let typeCpn = Vue.extend({
+    template:'#typeTemp',
+});
+
 let goTopCpn = Vue.extend({
     template:'#goTopTemp',
     data:function () {
@@ -62,12 +66,20 @@ let goTopCpn = Vue.extend({
 let mainnavcpn = Vue.component('mainnavcpn',mainCpn)
 let gotopcpn = Vue.component('gotopcpn',goTopCpn)
 let topBannercpn = Vue.component('topbannercpn',topBannerCpn)
-
+let typecpn = Vue.component('typecpn',typeCpn);
 
 const vm = new Vue({
     el:"#app",
     data:{
-    
+        foodCategory:[]
+    },
+    mounted(){
+        this.$http.get("json/shop.json").then(
+            function (res) {
+                console.log(res.body.dataZone)
+                this.foodCategory = res.body.dataZone.foodCategory;
+            }
+        )
     }
 });
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -21,8 +21,39 @@
     <topbannercpn></topbannercpn>
     <mainnavcpn></mainnavcpn>
     <gotopcpn></gotopcpn>
-    <div style="height: 2000px;background-color: lightgreen"></div>
+    <div style="height: 2000px;background-color: lightgreen">
+        <typecpn></typecpn>
+    </div>
+    
 </div>
+
+<!--顶部定位搜索栏-->
+<template id="topBannerTemp">
+    <div class="topBannerTemp">
+        <div slot="loc" id="infoBar">
+            <i class="fa fa-location-arrow"></i>大连东软信息学院<i class="fa fa fa-arrow-circle-o-down"></i>
+        </div>
+        <div slot="content" id="searchBar">
+            <div class="input-group mb-0 mt-3 col-10 offset-1">
+                <div class="input-group-prepend">
+                     <span class="input-group-text">
+                         <i class="fa fa-search"></i>
+                     </span>
+                </div>
+                <input type="text" class="form-control" placeholder="Username">
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="typeTemp">
+    <div class="row">
+        <span v-for="(item,index) in $root.foodCategory" class="col-3 text-center mt-3">
+            <img v-bind:src="item.imgSrc"><br/>
+            {{item.categoryName}}
+        </span>
+    </div>
+</template>
 
 <!--回到顶部-->
 <template id="goTopTemp">
@@ -41,24 +72,7 @@
         </div>
     </div>
 </template>
-<!--顶部定位搜索栏-->
-<template id="topBannerTemp">
-    <div class="topBannerTemp">
-        <div slot="loc" id="infoBar">
-        <i class="fa fa-location-arrow"></i>大连东软信息学院<i class="fa fa fa-arrow-circle-o-down"></i>
-        </div>
-        <div slot="content" id="searchBar">
-            <div class="input-group mb-0 mt-3 col-10 offset-1">
-                <div class="input-group-prepend">
-                     <span class="input-group-text">
-                         <i class="fa fa-search"></i>
-                     </span>
-                </div>
-                <input type="text" class="form-control" placeholder="Username">
-            </div>
-        </div>
-    </div>
-</template>
+
 <script src="./js/jquery-3.3.1.js" ></script>
 <script src="./js/bootstrap.js"></script>
 <script src="./js/vue.js"></script>

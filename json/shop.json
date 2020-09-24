@@ -1,16 +1,37 @@
 {
-  "shopLists": [
-    {
-      "gid": 1,
-      "gname": "火锅"
+  "dataZone": {
+    "foodCategory": [
+      {"imgSrc":"img/dcfl01.png","categoryName": "美食1"},
+      {"imgSrc":"img/dcfl02.png","categoryName": "美食2"},
+      {"imgSrc":"img/dcfl03.png","categoryName": "美食3"},
+      {"imgSrc":"img/dcfl04.png","categoryName": "美食4"},
+      {"imgSrc":"img/dcfl05.png","categoryName": "美食5"},
+      {"imgSrc":"img/dcfl06.png","categoryName": "美食6"},
+      {"imgSrc":"img/dcfl07.png","categoryName": "美食7"},
+      {"imgSrc":"img/dcfl08.png","categoryName": "美食8"},
+      {"imgSrc":"img/dcfl09.png","categoryName": "美食9"},
+      {"imgSrc":"img/dcfl10.png","categoryName": "美食10"}
+    ],
+    "advertising": {"title": "品质套餐","description": "搭配齐全吃得好","href": "#/暂时留空",
+      "bgImgSrc": "img/index_banner.png"
     },
-    {
-      "gid": 2,
-      "gname": "炒菜"
-    },
-    {
-      "gid": 3,
-      "gname": "面条"
-    }
-  ]
+    "recommendMerchant": [
+      {"imgSrc": "img/sj01.png","name": "万家饺子(睿道店)",
+        "star": 5,"score": 4.8,
+        "sales": 344,"delivery": "美团の","start": 15,"deliveryCost": 3,
+        "distance": 3.33,
+        "time": 30,
+        "tips": "各种饺子海菜包子",
+        "activity": [{"type": 1,"des": "新用户首单立减999元"},{"type": 2,"des": "特价商品不要钱"}]
+      },
+      {"imgSrc": "img/sj02.png","name": "李家饺子(睿道店)",
+        "star": 4,"score": 4.8,
+        "sales": 344,"delivery": "美团の","start": 15,"deliveryCost": 3,
+        "distance": 3.33,
+        "time": 30,
+        "tips": "鲅鱼饼子",
+        "activity": [{"type": 1,"des": "新用户首单不要钱"},{"type": 2,"des": "特价商品不要钱"}]
+      }
+    ]
+  }
 }
