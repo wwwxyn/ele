@@ -27,19 +27,8 @@
 <!--顶部定位搜索栏-->
 <template id="topBannerTemp">
     <div class="topBannerTemp">
-        <div slot="loc" id="infoBar">
-            <i class="fa fa-location-arrow"></i>大连东软信息学院<i class="fa fa fa-arrow-circle-o-down"></i>
-        </div>
-        <div slot="content" id="searchBar">
-            <div class="input-group mb-0 mt-3 col-10 offset-1">
-                <div class="input-group-prepend">
-                     <span class="input-group-text">
-                         <i class="fa fa-search"></i>
-                     </span>
-                </div>
-                <input type="text" class="form-control" placeholder="搜索饿了么商户">
-            </div>
-        </div>
+        <slot name="loc"></slot>
+        <slot name="content"></slot>
     </div>
 </template>
 
@@ -59,8 +48,8 @@
 <template id="mouTemp">
     <div>
         <topbannercpn>
-            <div slot="content" class="fixed-top">
-                商户列表具体内容
+            <div slot="content" style="height: 50px;padding:10px;text-align: center;color: white" >
+                <h3>商户列表</h3>
             </div>
         </topbannercpn>
         1234
@@ -72,7 +61,21 @@
 
 <template id="homeTemp">
     <div>
-        <topbannercpn></topbannercpn>
+        <topbannercpn>
+            <div slot="loc" id="infoBar">
+                <i class="fa fa-location-arrow"></i>大连东软信息学院<i class="fa fa fa-arrow-circle-o-down"></i>
+            </div>
+            <div slot="content" id="searchBar">
+                <div class="input-group mb-0 mt-3 col-10 offset-1">
+                    <div class="input-group-prepend">
+                     <span class="input-group-text">
+                         <i class="fa fa-search"></i>
+                     </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="搜索饿了么商户">
+                </div>
+            </div>
+        </topbannercpn>
         <mainnavcpn></mainnavcpn>
         <gotopcpn></gotopcpn>
 
@@ -81,6 +84,7 @@
         </div>
     </div>
 </template>
+
 
 <!--回到顶部-->
 <template id="goTopTemp">
@@ -92,10 +96,18 @@
 <template id="mainTemp">
     <div class="container-fluid fixed-bottom text-muted mainTemp">
         <div class="row">
-            <h6 class="col-2 offset-2"><i class="fa fa-home"></i>首页</h6>
-            <h6 class="col-2 "><i class="fa fa-home"></i>发现</h6>
-            <h6 class="col-2 "><i class="fa fa-home"></i>订单</h6>
-            <h6 class="col-2 "><i class="fa fa-home"></i>我的</h6>
+            <router-link to="/home" class="col-2 offset-2">
+                <span><i class="fa fa-home"></i>首页</span>
+            </router-link>
+            <router-link to="/mou" class="col-2">
+                <span><i class="fa fa-home"></i>发现</span>
+            </router-link>
+            <router-link to="/home" class="col-2">
+                <span><i class="fa fa-home"></i>订单</span>
+            </router-link>
+            <router-link to="/home" class="col-2">
+                <span><i class="fa fa-home"></i>我的</span>
+            </router-link>
         </div>
     </div>
 </template>

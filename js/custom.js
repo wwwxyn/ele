@@ -16,7 +16,7 @@ let topBannerCpn = Vue.extend({
             this.dist = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
             // var searchTop = document.querySelector('#searchBar').offsetTop
             // console.log(searchTop)
-            if (this.dist > 16 ) {
+            if (this.dist > 20 ) {
                 $(".topBannerTemp").addClass("fixed-top");
                 $("#infoBar").css("display","none");
 
@@ -76,6 +76,7 @@ let homecpn = Vue.component('homecpn',homeCpn);
 //配置路由
 let routers = [
     {path:'/mou',component: moucpn},
+    {path:'/home',component: homecpn},
     {path:'/',component: homecpn},
 ];
 //生成路由实例
