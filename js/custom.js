@@ -61,7 +61,6 @@ let goTopCpn = Vue.extend({
     }
 });
 
-
 //注册
 let mainnavcpn = Vue.component('mainnavcpn',mainCpn)
 let gotopcpn = Vue.component('gotopcpn',goTopCpn)
