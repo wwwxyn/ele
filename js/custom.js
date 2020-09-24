@@ -19,7 +19,7 @@ let topBannerCpn = Vue.extend({
             if (this.dist > 16 ) {
                 $(".topBannerTemp").addClass("fixed-top");
                 $("#infoBar").css("display","none");
-                
+
             } else {
                 $(".topBannerTemp").removeClass("fixed-top");
                 $("#infoBar").css("display","block");
@@ -28,7 +28,7 @@ let topBannerCpn = Vue.extend({
             // console.log(scrollTop,offsetTop)
         },
     }
-    
+
 });
 
 let mainCpn = Vue.extend({
@@ -60,18 +60,36 @@ let goTopCpn = Vue.extend({
         }
     }
 });
-
+let mouCpn = Vue.extend({
+    template:'#mouTemp',
+});
+let homeCpn = Vue.extend({
+    template:'#homeTemp',
+});
 //注册
 let mainnavcpn = Vue.component('mainnavcpn',mainCpn)
 let gotopcpn = Vue.component('gotopcpn',goTopCpn)
 let topBannercpn = Vue.component('topbannercpn',topBannerCpn)
 let typecpn = Vue.component('typecpn',typeCpn);
+let moucpn = Vue.component('moucpn',mouCpn);
+let homecpn = Vue.component('homecpn',homeCpn);
+//配置路由
+let routers = [
+    {path:'/mou',component: moucpn},
+    {path:'/',component: homecpn},
+];
+//生成路由实例
+let myrouter = new VueRouter({
+    routes:routers
+});
+
 
 const vm = new Vue({
     el:"#app",
     data:{
         foodCategory:[]
     },
+    router:myrouter,
     mounted(){
         this.$http.get("json/shop.json").then(
             function (res) {

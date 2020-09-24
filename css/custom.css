@@ -16,6 +16,13 @@
     display: block;
 }
 .topBannerTemp{
-    background-color: #b8daff;
+    background-color: #269dee;
     padding-bottom: 0.5em;
+}
+img{
+   height: 50px;
+    width: 50px;
+}
+#div1{
+margin-left: 30px;
 }

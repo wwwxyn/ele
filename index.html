@@ -18,13 +18,10 @@
 </head>
 <body>
 <div id="app">
-    <topbannercpn></topbannercpn>
-    <mainnavcpn></mainnavcpn>
-    <gotopcpn></gotopcpn>
-    <div style="height: 2000px;background-color: lightgreen">
-        <typecpn></typecpn>
-    </div>
-    
+    <transition enter-active-class="animated fadeIn">
+        <router-view></router-view>
+    </transition>
+
 </div>
 
 <!--顶部定位搜索栏-->
@@ -40,18 +37,48 @@
                          <i class="fa fa-search"></i>
                      </span>
                 </div>
-                <input type="text" class="form-control" placeholder="Username">
+                <input type="text" class="form-control" placeholder="搜索饿了么商户">
             </div>
         </div>
     </div>
 </template>
 
 <template id="typeTemp">
+    <div class="container-fluid  mainNavTemp text-muted">
     <div class="row">
         <span v-for="(item,index) in $root.foodCategory" class="col-3 text-center mt-3">
+            <router-link to="/mou">
             <img v-bind:src="item.imgSrc"><br/>
             {{item.categoryName}}
+            </router-link>
         </span>
+    </div>
+    </div>
+</template>
+<!--配置路由模板-->
+<template id="mouTemp">
+    <div>
+        <topbannercpn>
+            <div slot="content" class="fixed-top">
+                商户列表具体内容
+            </div>
+        </topbannercpn>
+        1234
+        <mainnavcpn></mainnavcpn>
+        <gotopcpn></gotopcpn>
+    </div>
+
+</template>
+
+<template id="homeTemp">
+    <div>
+        <topbannercpn></topbannercpn>
+        <mainnavcpn></mainnavcpn>
+        <gotopcpn></gotopcpn>
+
+        <div style="height: 2000px;background-color: lightgreen">
+            <typecpn></typecpn>
+        </div>
     </div>
 </template>
 
