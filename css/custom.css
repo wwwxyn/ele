@@ -26,3 +26,104 @@ img{
 #div1{
 margin-left: 30px;
 }
+.doot{
+    text-align: right;
+    margin-left: 200px;
+}
+#ggimg{
+    margin-top: 50px;
+    width: 1200px;
+    height: 300px;
+}
+.bgimg{
+    /**
+	 * 设置容器宽度95%，然后水平居中，这样两边留白;
+	 * 这里不能用padding，因为背景图片也会覆盖padding
+	 */
+    width: 95%;
+    margin: 0 auto;
+    height: 29vw;
+
+    /*此三个样式组合，可以保证背景图片充满整个容器*/
+    background-image: url(../img/index_banner.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    box-sizing: border-box;
+    padding: 2vw 6vw;
+    margin-top: 60px;
+}
+.super{
+    width: 95%;
+    margin: 0 auto;
+    height: 10vw;
+    background-color: #FEEDC1;
+    margin-top: 1.3vw;
+    margin-bottom: 50px;
+    border-radius: 2vm;
+    color: #644F1B;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.pay{
+    background-color: rgba(255,255,255,1);
+    border-top: rgba(221,221,221,1) 1px solid;
+}
+
+/*#car>#firstcar>.quan{*/
+/*    width: 16vw;*/
+/*    height: 16vw;*/
+/*    box-sizing: border-box;*/
+/*    border: solid 1.6vw #444;*/
+/*    border-radius: 8vw;*/
+/*    background-color: #3190E8;*/
+/*    font-size: 7vw;*/
+/*    color: #fff;*/
+
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+
+/*    margin-top: -4vw;*/
+/*    margin-left: 3vw;*/
+
+/*    position: relative;*/
+/*}*/
+/*#car>#firstcar .cart{*/
+/*    width: 5vw;*/
+/*    height: 5vw;*/
+/*    border-radius: 2.5vw;*/
+/*    background-color: red;*/
+/*    color: #fff;*/
+/*    font-size: 3.6vw;*/
+
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+
+/*    position: absolute;*/
+/*    right: -1.5vw;*/
+/*    top: -1.5vw;*/
+/*}*/
+/*#car #secondcar{*/
+/*    background-color: #38CA73;*/
+/*    width: 250px;*/
+/*    font-size: 50px;*/
+/*    color: white;*/
+/*    line-height: 140px;*/
+/*    text-align: center;*/
+/*}*/
+/*#car #firstcar p{*/
+/*    font-size: 25px;*/
+/*}*/
+/*#car #firstcar p,h1{*/
+/*    font-size: 25px;*/
+/*    color: white;*/
+/*}*/
+/*.toptext{*/
+/*    text-align: center;*/
+/*    font-size: 40px;*/
+/*    color: white;*/
+/*}*/

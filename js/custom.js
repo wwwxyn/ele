@@ -39,6 +39,10 @@ let typeCpn = Vue.extend({
     template:'#typeTemp',
 });
 
+let reCpn = Vue.extend({
+    template:'#reTemp'
+});
+
 let goTopCpn = Vue.extend({
     template:'#goTopTemp',
     data:function () {
@@ -66,6 +70,22 @@ let mouCpn = Vue.extend({
 let homeCpn = Vue.extend({
     template:'#homeTemp',
 });
+
+let shopinfoCpn = Vue.extend({
+    template:'#shopinfoTemp',
+});
+let carCpn = Vue.extend({
+    template:'#carTemp',
+});
+let loginCpn = Vue.extend({
+    template:'#loginTemp',
+});
+let registerCpn = Vue.extend({
+    template:'#registerTemp',
+});
+let buyCpn = Vue.extend({
+    template:'#buyTemp'
+});
 //注册
 let mainnavcpn = Vue.component('mainnavcpn',mainCpn)
 let gotopcpn = Vue.component('gotopcpn',goTopCpn)
@@ -73,11 +93,23 @@ let topBannercpn = Vue.component('topbannercpn',topBannerCpn)
 let typecpn = Vue.component('typecpn',typeCpn);
 let moucpn = Vue.component('moucpn',mouCpn);
 let homecpn = Vue.component('homecpn',homeCpn);
+let recpn = Vue.component('recommcpn',reCpn);
+let shopinfocpn = Vue.component('shopinfocnp',shopinfoCpn)
+let logincpn=Vue.component('logincpn',loginCpn);
+let registercpn=Vue.component('registercpn',registerCpn);
+let buycpn = Vue.component('buycpn',buyCpn);
+let carcpn = Vue.component('carcpn',carCpn);
+
 //配置路由
 let routers = [
     {path:'/mou',component: moucpn},
     {path:'/home',component: homecpn},
     {path:'/',component: homecpn},
+    {path:'/shop',component: shopinfocpn},
+    {path:'/login',component: logincpn},
+    {path:'/register',component: registercpn},
+    {path:'/buy',component: buyCpn},
+    
 ];
 //生成路由实例
 let myrouter = new VueRouter({
@@ -88,7 +120,11 @@ let myrouter = new VueRouter({
 const vm = new Vue({
     el:"#app",
     data:{
-        foodCategory:[]
+        foodCategory:[],
+        recommendMerchant:[],
+        recommendsMerchant:[],
+        payshopinfo:[],
+        count:[]
     },
     router:myrouter,
     mounted(){
@@ -96,6 +132,10 @@ const vm = new Vue({
             function (res) {
                 console.log(res.body.dataZone)
                 this.foodCategory = res.body.dataZone.foodCategory;
+                this.recommendMerchant=res.body.dataZone.recommendMerchant;
+                this.recommendsMerchant = res.body.dataZone.recommendsMerchant;
+                this.count = res.body.dataZone.count;
+                this.payshopinfo = res.body.dataZone.payshopinfo;
             }
         )
     }
