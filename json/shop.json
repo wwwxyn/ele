@@ -6,7 +6,7 @@
       {"imgSrc":"img/dcfl03.png","categoryName": "跑腿代购"},
       {"imgSrc":"img/dcfl04.png","categoryName": "汉堡披萨"},
       {"imgSrc":"img/dcfl05.png","categoryName": "甜品饮品"},
-      {"imgSrc":"img/dcfl06.png","categoryName": "速食简餐"},
+      {"imgSrc":"img/dcfl06.png","categoryName": "速食简食"},
       {"imgSrc":"img/dcfl07.png","categoryName": "地方小吃"},
       {"imgSrc":"img/dcfl08.png","categoryName": "米粉面馆"},
       {"imgSrc":"img/dcfl09.png","categoryName": "包子粥铺"},
@@ -89,38 +89,91 @@
         "activity": [{"type": 1,"des": "新用户首单不要钱"},{"type": 2,"des": "特价商品不要钱"}]
       }
     ],
-    "recommendsMerchant":[
-      {"imgSrc": "img/sp01.png","gname": "纯肉鲜肉(水饺)",
-        "price":"￥15",
-        "tips": "新鲜猪肉"
-      },
-
-      {"imgSrc": "img/sp02.png","gname": "玉米鲜肉(水饺)",
-        "price":"￥15",
-        "tips": "新鲜猪肉"
-      },
-      {"imgSrc": "img/sp03.png","gname": "虾仁三鲜(水饺)",
-        "price":"￥15",
-        "tips": "新鲜猪肉"
-      },
-      {"imgSrc": "img/sp04.png","gname": "素三鲜(水饺)",
-        "price":"￥15",
-        "tips": "新鲜猪肉"
-      },
-      {"imgSrc": "img/sp05.png","gname": "角瓜鸡蛋(水饺)",
-        "price":"￥15",
-        "tips": "新鲜猪肉"
-      },
+    "blists":[
       {
-        "imgSrc": "img/sp11.png",
-        "gname": "小白菜肉(水饺)",
-        "price": "￥15",
-        "tips": "新鲜猪肉"
-      }
-    ],
-    "count":[
-      {
+        "locationname": "万家饺子(软件园E18店)",
+        "foodname": "纯肉鲜肉(水饺)x2",
+        "foodname2": "玉米鲜肉(水饺)x1",
+        "delivery": "配送费",
+        "allprice": "49",
+        "foodnameprice": "15",
+        "foodname2price": "16",
+        "deliveryprice": "3",
+        "gotopay": "去支付",
         "ccount":1
+
+      },
+      {
+        "locationname": "小锅拌饭豆腐馆(全运店)",
+        "foodname": "纯肉鲜肉(水饺)x2",
+        "foodname2": "玉米鲜肉(水饺)x1",
+        "delivery": "配送费",
+        "allprice": "55",
+        "foodnameprice": "15",
+        "foodname2price": "16",
+        "deliveryprice": "3",
+        "gotopay": "去支付",
+        "ccount":1
+
+      }
+
+    ],
+    "lists":[
+      {
+        "img":"img/sp01.png",
+        "logal":"招牌",
+        "name":"纯肉鲜肉(水饺)",
+        "message":"新鲜猪肉",
+        "price":15,
+        "count":3
+      },
+      {
+        "img":"img/sp02.png",
+        "logal":"招牌",
+        "name":"玉米鲜肉(水饺)",
+        "message":"玉米猪肉",
+        "price":16,
+        "count":2
+      },
+      {
+        "img":"img/sp03.png",
+        "logal":"",
+        "name":"虾仁三鲜(蒸饺)",
+        "message":"虾仁三鲜",
+        "price":22,
+        "count":1
+      },
+      {
+        "img":"img/sp04.png",
+        "logal":"",
+        "name":"素三鲜(蒸饺)",
+        "message":"素三鲜",
+        "price":15,
+        "count":1
+      },
+      {
+        "img":"img/sp05.png",
+        "logal":"",
+        "name":"角瓜鸡蛋(蒸饺)",
+        "message":"角瓜鸡蛋",
+        "price":16,
+        "count":1
+      },
+      {
+        "img":"img/sp06.png",
+        "logal":"",
+        "name":"小白菜肉(水饺)",
+        "message":"小白菜肉",
+        "price":18,
+        "count":1
+      },
+      {
+        "img":"img/sp07.png",
+        "logal":"",
+        "name":"芹菜牛肉(水饺)",
+        "message":"芹菜牛肉",
+        "price":18,
+        "count":1
       }
     ],
     "payshopinfo":[

@@ -22,6 +22,45 @@
         <router-view></router-view>
     </transition>
 </div>
+
+<!--顶部定位搜索栏-->
+<template id="topBannerTemp">
+    <div class="topBannerTemp">
+        <slot name="loc"></slot>
+        <slot name="content"></slot>
+    </div>
+</template>
+
+<template id="typeTemp">
+    <div class="container-fluid  mainNavTemp text-muted">
+        <div class="row">
+        <span v-for="(item,index) in $root.foodCategory" class="col-2 text-center mt-3" :class="{'offset-1': !(index%5)}">
+            <router-link to="/mou">
+            <img v-bind:src="item.imgSrc"><br/>
+            {{item.categoryName}}
+            </router-link>
+        </span>
+        </div>
+    </div>
+</template>
+<!--配置路由模板-->
+<!--商家信息-->
+<template id="mouTemp">
+    <div>
+        <topbannercpn>
+            <div slot="content" style="height: 50px;padding:10px;text-align: center;color: white" >
+                <h3>商户列表</h3>
+            </div>
+        </topbannercpn>
+        <router-link to="/smlist">
+            <recommcpn></recommcpn>
+            <mainnavcpn></mainnavcpn>
+            <gotopcpn></gotopcpn>
+        </router-link>
+    </div>
+
+</template>
+
 <!--主页面-->
 <template id="homeTemp">
     <div>
@@ -59,77 +98,105 @@
             <!--推荐商家-->
             <h3 class="text-center">---推荐商家---</h3>
             <recommcpn></recommcpn>
-            <!--        <router-link to="/shop">-->
-            <recommcpn></recommcpn>
-            <!--        </router-link>-->
         </div>
     </div>
 </template>
-
-<template id="topBannerTemp">
-    <div class="topBannerTemp">
-        <slot name="loc"></slot>
-        <slot name="content"></slot>
-    </div>
-</template>
-<!--主页面商品类型-->
-<template id="typeTemp">
-    <div class="container-fluid  mainNavTemp text-muted">
-    <div class="row">
-        <span v-for="(item,index) in $root.foodCategory" class="col-2 text-center mt-3" :class="{'offset-1': !(index%5)}">
-            <router-link to="/mou">
-            <img v-bind:src="item.imgSrc"><br/>
-            {{item.categoryName}}
-            </router-link>
-        </span>
-    </div>
-    </div>
-</template>
-
-<!--商户列表-->
-<template id="mouTemp">
+<!--商家信息组件-->
+<template id="shopmessageTemp">
     <div>
-        <topbannercpn>
-            <div slot="content" style="height: 50px;padding:10px;text-align: center;color: white" >
-                <h3>商户列表</h3>
-            </div>
-        </topbannercpn>
-        <recommcpn></recommcpn>
-        <mainnavcpn></mainnavcpn>
-        <gotopcpn></gotopcpn>
-    </div>
-</template>
-<!--商家信息-->
-<template id="shopinfoTemp">
-    <div>
-        <topbannercpn>
-            <div slot="content" style="height: 50px;padding:10px;text-align: center;color: white" >
+        <topbannercpn class="fixed-top">
+            <div slot="content" style="height: 50px;padding:10px;text-align: center;color: white"  >
                 <h3>商家信息</h3>
             </div>
         </topbannercpn>
-        <recommcpn></recommcpn>
+        <div class="container-fluid">
+            <div v-for="(item,index) in $root.payshopinfo" class="shopmessageTemp row text-muted ">
+                <div class="col-12  offset-3">
+                    <img  style="height: 15vw;width: 15vw" v-bind:src="item.imgSrc"/>
+                </div>
+                <div class="col-12 offset-3">
+                    <h1 class="font-weight-bolder text-dark">{{item.gname}}</h1>
+                    <p>{{item.price}}</p>
+                    <p>{{item.tips}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div v-for="(item,index) in $root.sLists" class="shopmessageTemp row">
+                <div class="col-12 col-sm-2 pt-3">
+                    <img v-bind:src="item.img"/>
+                </div>
+                <div class="col-8 col-sm-4">
+                    <h3 class=" font-weight-bold">{{item.name}}</h3>
+                    <p class="text-muted ">
+                        <span>{{item.price}}</span>
+                        <span>{{item.pprice}}</span>
+                    </p>
+                    <p class="text-muted">{{item.message}}</p>
+                </div>
+                <div class="col-4 col-sm-4 boot" style="text-align: right">
+                    <button v-on:click="item.count--" v-bind:disabled="item.count==1">-</button>
+                    {{item.count}}
+                    <button v-on:click="item.count++" v-bind:disabled="item.count==9">+</button>
+                </div>
+            </div>
+        </div>
+        <div v-for="(item,index) in $root.shopmessageLists" class="container-fluid">
+            <div class="row">
+                <div class="col-3">
+                    <img v-bind:src="item.img"/>
+                </div>
+                <div class="col-7">
+                    <span>{{item.logal}}</span>
+                    <h3>{{item.name}}</h3>
+                    <p>{{item.message}}</p>
+                    <p>{{item.price}}</p>
+                </div>
+                <div class="col-2">
+                    <p>{{item.count}}</p>
+                </div>
+            
+            </div>
+        </div>
+        <div class="fixed-bottom row">
+            <div id="car" class="row">
+                <div id="firstcar" class="bg-dark row">
+                    <div class="quan" >
+                        <i class="fa fa-shopping-cart" ></i>
+                        <div class="cart">3</div>
+                    </div>
+                    <div id="thirdcar" class="row">
+                        <div class="bg-dark">
+                            <h4 class="display-4 font-weight-bold"style="padding-left: 20px">12.88</h4>
+                            <p>另需配送费3元</p>
+                        </div>
+                    </div>
+                    <router-link to="/payonline">
+                        <div id="secondcar">去结算</div>
+                    </router-link>
+                </div>
+            </div>
+        </div>
         <mainnavcpn></mainnavcpn>
         <gotopcpn></gotopcpn>
     </div>
 </template>
+
 <!--详细信息-->
 <template id="reTemp">
-    <div class="container-fluid">
-            <div v-for="(item,index) in $root.recommendMerchant" class="row text-muted offset-1 pt-3">
-            <div class="col-12 col-sm-12">
-                    <img v-bind:src="item.imgSrc" :alt="item.name"/>
+    <div class="container-fluid ">
+        <div v-for="(item,index) in $root.recommendMerchant" class="row text-muted respan">
+            <div class="col-12 col-sm-2 pt-3 ">
+                <img v-bind:src="item.imgSrc" :alt="item.name"/>
             </div>
             <div class="col-8 col-sm-4">
-                <router-link to="/buy">
-                    <h3 class="font-weight-bolder text-dark">{{item.name}}</h3>
-                    <p><i v-for="i in item.star" class="fa fa-star text-warning"></i>4.9月售345单</p>
-                    <p>各种饺子</p>
-                    <p><span class="spa" style="background-color: lawngreen;">新</span>新用户xxxx</p>
-                    <p><span class="spa" style="background-color: orangered">特</span>特价用户</p>
-                </router-link>
-                
+                <h3 class="font-weight-bolder text-dark">{{item.name}}</h3>
+                <p><i v-for="i in item.star" class="fa fa-star text-warning"></i>4.9月售345单</p>
+                <p>各种饺子</p>
+                <p><span class="spa" style="background-color: lawngreen;">新</span>新用户xxxx</p>
+                <p><span class="spa" style="background-color: orangered">特</span>特价用户</p>
             </div>
-            <div class="col-4 col-sm-4 doot">
+            <div class="col-4 col-sm-3 doot" style="text-align: right">
                 <p>.</p>
                 <p>蜂鸟专送</p>
                 <p>3.22km|30分钟</p>
@@ -138,66 +205,6 @@
         </div>
     </div>
 </template>
-<!--订单-->
-<template id="buyTemp">
-    <div>
-        <topbannercpn>
-            <div slot="content" style="height: 50px;padding:10px;text-align: center;color: white">
-                <h3>店铺订单管理</h3>
-            </div>
-        </topbannercpn>
-        <div>
-            <div class="container-fluid">
-                <div v-for="(item,index) in $root.payshopinfo" class="row text-muted ">
-                    <div class="col-12  offset-3">
-                        <img  style="height: 15vw;width: 15vw" v-bind:src="item.imgSrc"/>
-                    </div>
-                    <div class="col-12 offset-3">
-                        <h1 class="font-weight-bolder text-dark">{{item.gname}}</h1>
-                        <p>{{item.price}}</p>
-                        <p>{{item.tips}}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="container-fluid">
-                <div v-for="(item,index) in $root.recommendsMerchant" class="row text-muted">
-                    <div class="col-12 col-sm-2 pt-3">
-                        <img v-bind:src="item.imgSrc" :alt="item.gname" style="width: 10vw;height: 10vw;"/>
-                    </div>
-                    <div class="col-8 col-sm-4">
-                        <h3 class="font-weight-bolder text-dark hh">{{item.gname}}</h3><br/>
-                        <p >{{item.price}}</p>
-                        <p class="textt">{{item.tips}}</p>
-                    </div>
-                    <div class="col-4 col-sm-4 boot" v-for="(item,index) in $root.count" style="text-align: right">
-                        <button v-on:click="item.ccount--" v-bind:disabled="item.ccount==1">-</button>
-                        {{item.ccount}}
-                        <button v-on:click="item.ccount++" v-bind:disabled="item.ccount==9">+</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-<!--        <div class="fixed-bottom row">-->
-<!--            <div id="car" class="row">-->
-<!--                <div id="firstcar">-->
-<!--                    <div class="quan">-->
-<!--                        <i class="fa fa-shopping-cart"></i>-->
-<!--                        <div class="cart">3</div>-->
-<!--                    </div>-->
-<!--                    <div>-->
-<!--                        <h1 class="display-4 font-weight-bold">12.88</h1>-->
-<!--                        <p>另需配送费3元</p>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <router-link to="/fiorder">-->
-<!--                    <div id="secondcar">去结算</div>-->
-<!--                </router-link>-->
-<!--            </div>-->
-<!--        </div>-->
-        <gotopcpn></gotopcpn>
-    </div>
-</template>
-
 <!--我的页面登录组件-->
 <template id="loginTemp">
     <div>
@@ -208,7 +215,7 @@
         </topbannercpn>
         <div>
             <form>
-                <div class="input-group mb-3 pt-3">
+                <div class="input-group mb-3 ">
                     <div class="input-group-prepend">
                         <span class="input-group-text">手机号码:</span>
                     </div>
@@ -230,6 +237,98 @@
         <gotopcpn></gotopcpn>
     </div>
 </template>
+
+<!--下面是订单页面-->
+<template id="orderTemp">
+    <div class="wrapper">
+        <topbannercpn>
+            <div slot="content" style="height: 50px;padding:10px;text-align: center;color: white">
+                <h3>订单详情</h3>
+            </div>
+        </topbannercpn>
+        <h3>未支付订单:</h3>
+        <div v-for="(item,index) in $root.bLists" >
+            <ul class="order">
+                <li>
+                    <div class="order-info">
+                        <p v-on:click="isShow=!isShow">{{item.locationname}}<i class="fa fa-caret-down"></i></p>
+                        <div class="order-info-right">
+                            <p>&#165;{{item.allprice}}</p>
+                            <div class="order-info-right-icon">
+                                <router-link to="/payonline">{{item.gotopay}}</router-link>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="order-detailet" v-show="isShow">
+                        <li>
+                            <p>{{item.foodname}}</p>
+                            <p>&#165;{{item.foodnameprice}}</p>
+                        </li>
+                        <li>
+                            <p>{{item.foodname2}}</p>
+                            <p>&#165;{{item.foodname2price}}</p>
+                        </li>
+                        <li>
+                            <p>{{item.delivery}}</p>
+                            <p>&#165;{{item.deliveryprice}}</p>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        
+        </div>
+        <mainnavcpn></mainnavcpn>
+    </div>
+</template>
+<!--下面是在线支付页面-->
+<template id="payTemp">
+    <div class="wrapper">
+        <topbannercpn>
+            <div slot="content" style="height: 50px;padding:10px;text-align: center;color: white">
+                <h3>在线支付</h3>
+            </div>
+        </topbannercpn>
+        <h3>订单信息:</h3>
+        <div v-for="(item,index) in $root.bLists" >
+            <ul class="order" type="none">
+                <li>
+                    <div class="order-info" style="text-align: left">
+                        <p style="font-size: 25px">{{item.locationname}}<i class="fa fa-caret-down" v-on:click="isShow=!isShow"></i></p>
+                        <div class="order-info-right">
+                            <p style="font-size: 30px">&#165;{{item.allprice}}</p>
+                        </div>
+                    </div>
+                    <ul class="order-detailet" v-show="isShow">
+                        <li>
+                            <p>{{item.foodname}}</p>
+                            <p>&#165;{{item.foodnameprice}}</p>
+                        </li>
+                        <li>
+                            <p>{{item.foodname2}}</p>
+                            <p>&#165;{{item.foodname2price}}</p>
+                        </li>
+                        <li>
+                            <p>{{item.delivery}}</p>
+                            <p>&#165;{{item.deliveryprice}}</p>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        
+        </div>
+        <ul class="choose" type="none">
+            <li><img src="./img/alipay.png " >
+                <i class="fa fa-check-square"></i></li>
+            <li><img src="./img/wechat.png" ></li>
+        </ul>
+        <mainnavcpn></mainnavcpn>
+    
+    </div>
+</template>
 <!--注册组件-->
 <template id="registerTemp">
     <div>
@@ -239,7 +338,7 @@
             </div>
         </topbannercpn>
         <form>
-            <div class="input-group mb-3 pt-3 phone">
+            <div class="input-group mb-3 ">
                 <div class="input-group-prepend">
                     <span class="input-group-text">手机号码:</span>
                 </div>
@@ -270,30 +369,6 @@
         <mainnavcpn></mainnavcpn>
     </div>
 </template>
-
-
-<!--购物车栏组件-->
-<!--<template id="carTemp">-->
-<!--    <div class="fixed-bottom">-->
-<!--        <div id="car" >-->
-<!--            <div id="firstcar">-->
-<!--                <div class="quan">-->
-<!--                    <i class="fa fa-shopping-cart"></i>-->
-<!--                    <div class="cart">3</div>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <h1 class="display-4 font-weight-bold">12.88</h1>-->
-<!--                    <p>另需配送费3元</p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <router-link to="/fiorder">-->
-<!--                <div id="secondcar">去结算</div>-->
-<!--            </router-link>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</template>-->
-
-
 <!--回到顶部-->
 <template id="goTopTemp">
     <div class="goTopTemp" v-show="topDistance>100" v-on:click="gotop">
@@ -304,16 +379,16 @@
 <template id="mainTemp">
     <div class="container-fluid fixed-bottom text-muted mainTemp">
         <div class="row">
-            <router-link to="/home" class="col-2 offset-2">
+            <router-link to="/home" class="col-2 offset-2 l1">
                 <span><i class="fa fa-home"></i>首页</span>
             </router-link>
-            <router-link to="/mou" class="col-2">
+            <router-link to="/mou" class="col-2 l1">
                 <span><i class="fa fa-home"></i>发现</span>
             </router-link>
-            <router-link to="/buy" class="col-2">
+            <router-link to="/odlist" class="col-2 l1">
                 <span><i class="fa fa-home"></i>订单</span>
             </router-link>
-            <router-link to="/login" class="col-2">
+            <router-link to="/login" class="col-2 l1">
                 <span><i class="fa fa-home"></i>我的</span>
             </router-link>
         </div>

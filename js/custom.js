@@ -19,16 +19,16 @@ let topBannerCpn = Vue.extend({
             if (this.dist > 20 ) {
                 $(".topBannerTemp").addClass("fixed-top");
                 $("#infoBar").css("display","none");
-
+                
             } else {
                 $(".topBannerTemp").removeClass("fixed-top");
                 $("#infoBar").css("display","block");
-
+                
             }
             // console.log(scrollTop,offsetTop)
         },
     }
-
+    
 });
 
 let mainCpn = Vue.extend({
@@ -74,8 +74,8 @@ let homeCpn = Vue.extend({
 let shopinfoCpn = Vue.extend({
     template:'#shopinfoTemp',
 });
-let carCpn = Vue.extend({
-    template:'#carTemp',
+let advertisingCpn=Vue.extend({
+    template:'#advertisingTemp',
 });
 let loginCpn = Vue.extend({
     template:'#loginTemp',
@@ -83,9 +83,30 @@ let loginCpn = Vue.extend({
 let registerCpn = Vue.extend({
     template:'#registerTemp',
 });
-let buyCpn = Vue.extend({
-    template:'#buyTemp'
+let orderList = Vue.extend({
+    template:'#orderTemp',
+    data:function(){
+        return {
+            isShow:false
+        };
+    },
+    
 });
+let payOnline = Vue.extend({
+    template:'#payTemp',
+    data:function(){
+        return {
+            isShow:false
+        };
+    },
+});
+let myeatCpn = Vue.extend({
+    template:'#myeatTemp',
+});
+let shopmessageList = Vue.extend({
+    template:'#shopmessageTemp',
+});
+
 //注册
 let mainnavcpn = Vue.component('mainnavcpn',mainCpn)
 let gotopcpn = Vue.component('gotopcpn',goTopCpn)
@@ -95,10 +116,13 @@ let moucpn = Vue.component('moucpn',mouCpn);
 let homecpn = Vue.component('homecpn',homeCpn);
 let recpn = Vue.component('recommcpn',reCpn);
 let shopinfocpn = Vue.component('shopinfocnp',shopinfoCpn)
+let advertisingcpn=Vue.component('advertisingcpn',advertisingCpn)
 let logincpn=Vue.component('logincpn',loginCpn);
 let registercpn=Vue.component('registercpn',registerCpn);
-let buycpn = Vue.component('buycpn',buyCpn);
-let carcpn = Vue.component('carcpn',carCpn);
+let orderlist = Vue.component('orderlist',orderList);
+let payonline = Vue.component('payonline',payOnline);
+let myeatcpn = Vue.component('myeatcpn',myeatCpn );
+let shopmessagelist = Vue.component('shopmessagelist',shopmessageList);
 
 //配置路由
 let routers = [
@@ -108,8 +132,10 @@ let routers = [
     {path:'/shop',component: shopinfocpn},
     {path:'/login',component: logincpn},
     {path:'/register',component: registercpn},
-    {path:'/buy',component: buyCpn},
-    
+    {path:'/odlist',component:orderList },
+    {path:'/payonline',component:payOnline},
+    {path:'/smlist',component:shopmessageList },
+
 ];
 //生成路由实例
 let myrouter = new VueRouter({
@@ -122,9 +148,9 @@ const vm = new Vue({
     data:{
         foodCategory:[],
         recommendMerchant:[],
-        recommendsMerchant:[],
-        payshopinfo:[],
-        count:[]
+        bLists:[],
+        sLists:[],
+        payshopinfo:[]
     },
     router:myrouter,
     mounted(){
@@ -133,8 +159,8 @@ const vm = new Vue({
                 console.log(res.body.dataZone)
                 this.foodCategory = res.body.dataZone.foodCategory;
                 this.recommendMerchant=res.body.dataZone.recommendMerchant;
-                this.recommendsMerchant = res.body.dataZone.recommendsMerchant;
-                this.count = res.body.dataZone.count;
+                this.bLists = res.body.dataZone.blists;
+                this.sLists=res.body.dataZone.lists;
                 this.payshopinfo = res.body.dataZone.payshopinfo;
             }
         )
